@@ -44,37 +44,63 @@ func readInput(path string) (Data, error) {
 	return data, nil
 }
 
-func partOne(data Data) int {
-	isSafe := func(r Report) bool {
-		if len(r) < 2 {
-			return true
-		}
-
-		// find out if increasing
-		// but if the first two are the same, that is considered unsafe
-		if r[0] == r[1] {
-			return false
-		}
-		increasing := r[0] < r[1]
-
-		prev := r[0]
-		for i, curr := range r {
-			if i == 0 {
-				continue
-			}
-			// we cannot switch between increasing & decreasing, nor can they be the same or too far apart
-			if (increasing && curr < prev) || (!increasing && prev < curr) || prev == curr || prev-curr > 3 || prev-curr < -3 {
-				return false
-			}
-			prev = curr
-		}
+// isSafe returns true iff a report is considered safe.
+// This means:
+// - all levels are either monotonically increasing or decreasing, and
+// - no two neighboring values differ by more than 3
+func isSafe(r Report) bool {
+	if len(r) < 2 {
 		return true
 	}
 
+	// find out if increasing
+	increasing := r[0] < r[1]
+
+	prev := r[0]
+	for i, curr := range r {
+		if i == 0 {
+			continue
+		}
+		// we cannot switch between increasing & decreasing, nor can they be the same or too far apart
+		if (increasing && curr < prev) || (!increasing && prev < curr) || prev == curr || prev-curr > 3 || prev-curr < -3 {
+			return false
+		}
+		prev = curr
+	}
+	return true
+}
+
+func partOne(data Data) int {
 	safeCount := 0
 	for _, r := range data {
 		if isSafe(r) {
 			safeCount++
+		}
+	}
+	return safeCount
+}
+
+func partTwo(data Data) int {
+	safeCount := 0
+	for _, r := range data {
+		// this is a dumb approach
+		// we just bruteforce all possible ways a single level could be removed
+		// (including no level being removed)
+		// it would be more efficient to go through the data once and potentially backtrack
+		// anyway, this works
+		if isSafe(r) {
+			safeCount++
+			continue
+		}
+	inner:
+		for i := range len(r) {
+			// new report by removing i-th element
+			// need to reallocate the report first, otherwise we're potentially modifying the original report
+			rMod := append(append(Report{}, r[:i]...), r[i+1:]...)
+			if isSafe(rMod) {
+				safeCount++
+				break inner
+			}
 		}
 	}
 	return safeCount
@@ -95,4 +121,5 @@ func main() {
 	}
 
 	log.Printf("Answer 1: %d", partOne(data))
+	log.Printf("Answer 2: %d", partTwo(data))
 }
