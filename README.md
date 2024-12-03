@@ -31,4 +31,4 @@ Answer 2: 456
 |                   **Day**                    | **Language** | **Part 1** | **Part 2** |
 |:--------------------------------------------:|:------------:|:----------:|:----------:|
 | [Day 1](https://adventofcode.com/2024/day/1) |  Kotlin ❤️   |     ⭐      |     ⭐      |
-| [Day 1](https://adventofcode.com/2024/day/2) |      Go      |     ⭐      |     ⭐      |
+| [Day 2](https://adventofcode.com/2024/day/2) |      Go      |     ⭐      |     ⭐      |
