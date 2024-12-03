@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "dev": "deno run --watch day03.ts"
+  },
+  "imports": {
+    "@std/cli": "jsr:@std/cli@^1.0.7"
+  }
+}

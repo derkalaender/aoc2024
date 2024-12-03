@@ -28,7 +28,8 @@ Answer 2: 456
 
 ## Progress
 
-|                   **Day**                    | **Language** | **Part 1** | **Part 2** |
-|:--------------------------------------------:|:------------:|:----------:|:----------:|
-| [Day 1](https://adventofcode.com/2024/day/1) |  Kotlin ❤️   |     ⭐      |     ⭐      |
-| [Day 2](https://adventofcode.com/2024/day/2) |      Go      |     ⭐      |     ⭐      |
+|                   **Day**                    |   **Language**    | **Part 1** | **Part 2** |
+|:--------------------------------------------:|:-----------------:|:----------:|:----------:|
+| [Day 1](https://adventofcode.com/2024/day/1) |     Kotlin ❤️     |     ⭐      |     ⭐      |
+| [Day 2](https://adventofcode.com/2024/day/2) |        Go         |     ⭐      |     ⭐      |
+| [Day 3](https://adventofcode.com/2024/day/3) | TypeScript (Deno) |     ⭐      |     ⭐      |
